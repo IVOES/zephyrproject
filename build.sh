@@ -9,5 +9,5 @@ compile() {
 APP_ROOT_DIR=zephyr/samples/
 APP_DIRS=$(find $APP_ROOT_DIR -type d -exec test -f '{}'/CMakeLists.txt \; -print)
 for app in $APP_DIRS; do
-  compile $app
+  timeout 10m compile $app
 done
