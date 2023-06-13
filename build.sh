@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ZEPHYRPROJECT=$PWD
+
 sudo apt-get update -y
 #cmake >= 3.20.5 required
 #wget https://apt.kitware.com/kitware-archive.sh
@@ -21,3 +23,6 @@ wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.1
 test -d /opt/zephyr-sdk-0.16.1/ || sudo tar xvf zephyr-sdk-0.16.1_linux-x86_64.tar.xz -C /opt
 cd /opt/zephyr-sdk-0.16.1
 yes | ./setup.sh
+
+cd $ZEPHYRPROJECT/zephyr
+west build samples/basic/blinky -b reel_board
