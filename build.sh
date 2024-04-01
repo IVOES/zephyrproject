@@ -4,6 +4,7 @@ compile() {
   APP_DIR=$1
   BOARD=$(grep ':board:' $APP_DIR/README.rst | awk '{ print $2 }')
   timeout 10m west build -p always $APP_DIR -b $BOARD
+  rm -rf build
 }
 
 APP_ROOT_DIR=zephyr/samples/
