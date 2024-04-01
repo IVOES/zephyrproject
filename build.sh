@@ -2,7 +2,14 @@
 
 compile() {
   APP_DIR=$1
+  echo -e "\e[34mAPP_DIR:$APP_DIR\e[0m"
+
   BOARD=$(grep ':board:' $APP_DIR/README.rst | awk '{ print $2 }')
+  if [ -z "$BOARD" ]; then
+    BOARD=qemu_cortex_m3
+  fi
+  echo -e "\e[34mBOARD:$BOARD\e[0m"
+
   timeout 10m west build -p always $APP_DIR -b $BOARD
   rm -rf build
 }
