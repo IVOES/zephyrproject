@@ -10,7 +10,9 @@ sudo apt-get install -y --no-install-recommends git cmake ninja-build gperf \
   make gcc gcc-multilib g++-multilib libsdl2-dev libmagic1
 pip install west
 
-west init .
+git clone https://github.com/zephyrproject-rtos/zephyr.git
+(cd zephyr && git checkout 733a35864acc80310a63db894d90a387708afcb5)
+west init -l zephyr
 west update
 west zephyr-export
 pip install -r zephyr/scripts/requirements.txt
