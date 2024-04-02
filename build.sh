@@ -4,7 +4,7 @@ compile() {
   APP_DIR=$1
   echo -e "\e[34mAPP_DIR:$APP_DIR\e[0m"
 
-  BOARD=$(grep ':board:' $APP_DIR/README.rst | awk '{ print $2 }')
+  BOARD=$(grep ':board:' $APP_DIR/README.rst | grep -v '<' | awk '{ print $2 }' | head -n 1)
   if [ -z "$BOARD" ]; then
     BOARD=qemu_cortex_m3
   fi
